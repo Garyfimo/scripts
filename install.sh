@@ -4,9 +4,9 @@
 # 2015 - OSSE - Oficina de Soluciones y Servicios Empresariales
 # Author: José Elcorrobarrutia
 #------------------------------------------------------------------------------------------
-#  
+#
 # Este Script instala OpenERP7.0 en una Instancia Nueva de Ubuntu 14.04 LTS de WindowsAzure
-# (amd64 20150123) 
+# (amd64 20150123)
 # Componentes de la Solución
 # Ubuntu 14.04 LTS WindowsAzure
 # Apache2
@@ -55,8 +55,8 @@ echo -e "\n========================================= PostgreSQL $PG_VERSION Sett
 # sudo sed -i s/"#listen_addresses = 'localhost'"/"listen_addresses = '*'"/g /etc/postgresql/$PG_VERSION/main/postgresql.conf
 
 echo -e "\n---- Creating the Odoo PostgreSQL User  ----"
-sudo su - postgres -c "createuser -s --createdb --no-createrole $OE_USER" 2> /dev/null || true 
-		
+sudo su - postgres -c "createuser -s --createdb --no-createrole $OE_USER" 2> /dev/null || true
+
 #--------------------------------------------------
 # Servidor Web
 #--------------------------------------------------
@@ -97,7 +97,7 @@ sudo pip install gdata --upgrade
 sudo easy_install Geraldo
 sudo mv $OE_INSTGER/geraldo $OE_INSTGER/geraldo.bk
 echo -e "\n---- Install wkhtml and place on correct place for ODOO 8 ----"
-sudo wget http://http://download.gna.org/wkhtmltopdf/0.12/0.12.1/wkhtmltopdf/archive/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+sudo wget http://download.gna.org/wkhtmltopdf/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
 sudo dpkg -i wkhtmltox-0.12.1_linux-trusty-amd64.deb
 sudo cp /usr/local/bin/wkhtmltopdf /usr/bin
 sudo cp /usr/local/bin/wkhtmltoimage /usr/bin
@@ -134,7 +134,7 @@ sudo chown -R $OE_USER:$OE_USER $GLOBAL_HOME/*
 # sudo service apache2 restart
 
 
-	
+
 echo -e "* Create server config file"
 sudo cp $OE_HOME/debian/openerp-server.conf /etc/$OE_CONF.conf
 sudo chown $OE_USER:$OE_USER /etc/odoo-server.conf
@@ -235,6 +235,6 @@ sudo chown root: /etc/init.d/$OE_CONF
 
 echo -e "* Start ODOO on Startup"
 sudo update-rc.d $OE_CONF defaults
- 
+
 sudo service $OE_CONF start
 echo "Done! The ODOO server can be started with: service odoo-server start"
